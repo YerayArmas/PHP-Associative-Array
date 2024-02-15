@@ -86,85 +86,91 @@ foreach ($shop as $arr2) {
     
     
 // 2.1 
-//Show Only Products and Quantities sold
+//Show Only Products and Quantities sold alphabetically. I had to get help for the "usort" function.
 
-$shop2 = [["name" => "Laptop", "price" => 800, "qty" => 2], ["name" => "Phone", "price" => 600, "qty" => 2], ["name" => "Headphones", "price" => 40, "qty" => 2]];
+$shop2 = [["name" => "Laptop", "price" => 800, "qty" => 2], ["name" => "Phone", "price" => 600, "qty" => 2], ["name" => "Headphones", "price" => 40, "qty" => 8]];
+
+usort($shop2, function ($a, $b) {
+    return strcmp($a['name'], $b['name']);
+});
 
     foreach ($shop2 as $price) {
     if (array_key_exists('price', $price)) {
         }
         echo $price['name'] . ": - " . "total amount => " . $price['price'] * $price['qty'] . "\n";
-};
+} echo "\n";
 
 
 //2.2 
 
-foreach ($shop2 as $shopping) {
-    echo "Products: ";
-    echo $shopping['name'] . $shopping['price'] * $shopping['qty'] . "\n";
-} echo "\n";
+// foreach ($shop2 as $shopping) {
+//     if (array_key_exists('products', $shopping)) {
+//         echo "Products: \n";
+//         foreach ($shopping('products') as $product) {
+//             echo $product['name'] . ' - Total: ' . $product['price'] * $product['qty'] . "\n";
+//         }
+//         echo "\n";
+//     }
+// }
+
+// // Iteration 3
+
+// $users = [
+//     [
+//         "Name" => "Yeray",
+//         "id" => 123,
+//         "Email" => "yerayarmas@gmail.com",
+//         "Password" => "202020",
+//         "Role" => "Admin",
+//         "Status" => "Active"
+
+//     ],
+//     [
+//         "Name" => "The Second",
+//         "id" => 567,
+//         "Email" => "secondy@gmail.com",
+//         "Password" => "404040",
+//         "Role" => "Guest",
+//         "Status" => "Inactive"
+//     ],
+//     [
+//         "Name" => "The Third",
+//         "id" => 789,
+//         "Email" => "thirdy@gmail.com",
+//         "Password" => "606060",
+//         "Role" => "Guest",
+//         "Status" => "Active"
+//     ]
+// ];
+
+// // 3.1
+// // Show only users Email + Status
+// foreach ($users as $try) {
+//     if ($try['Email']) {
+//         echo 'Email: ' . $try['Email'] . "\n";
+//     }
+//     if ($try['Status']) {
+//         echo 'Status: ' . $try['Status'] . "\n";
+//     }
+//     echo "\n";
+// };
 
 
-
-// Iteration 3
-
-$users = [
-    [
-        "Name" => "Yeray",
-        "id" => 123,
-        "Email" => "yerayarmas@gmail.com",
-        "Password" => "202020",
-        "Role" => "Admin",
-        "Status" => "Active"
-
-    ],
-    [
-        "Name" => "The Second",
-        "id" => 567,
-        "Email" => "secondy@gmail.com",
-        "Password" => "404040",
-        "Role" => "Guest",
-        "Status" => "Inactive"
-    ],
-    [
-        "Name" => "The Third",
-        "id" => 789,
-        "Email" => "thirdy@gmail.com",
-        "Password" => "606060",
-        "Role" => "Guest",
-        "Status" => "Active"
-    ]
-];
-
-// 3.1
-// Show only users Email + Status
-foreach ($users as $try) {
-    if ($try['Email']) {
-        echo 'Email: ' . $try['Email'] . "\n";
-    }
-    if ($try['Status']) {
-        echo 'Status: ' . $try['Status'] . "\n";
-    }
-    echo "\n";
-};
+// // 3.2
+// // Change an specific ID number in the array
+// foreach ($users as $key => $user) {
+//     if ($user['id'] == 567) {
+//         $users[$key]['id'] = 3;
+//     }
+// }
+// print_r($users);
 
 
-// 3.2
-// Change an specific ID number in the array
-foreach ($users as $key => $user) {
-    if ($user['id'] == 567) {
-        $users[$key]['id'] = 3;
-    }
-}
-print_r($users);
-
-
-
-// 3.3
-// Delete Key in the array if it shows 'Inactive'
-foreach ($users as &$rem) {
-    if ($rem['Status'] == 'Inactive') {
-        unset($rem['Status']);
-    }
-}
-print_r($users);
+// // 3.3
+// // Delete Key in the array if it shows 'Inactive'
+// foreach ($users as &$rem) {
+//     if ($rem['Status'] == 'Inactive') {
+//         unset($rem['Status']);
+//     }
+// }
+// print_r($users);
